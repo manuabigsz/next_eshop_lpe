@@ -12,6 +12,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "next": "15.1.7",
+    "next-auth": "^4.24.11",
     "pg": "^8.14.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",

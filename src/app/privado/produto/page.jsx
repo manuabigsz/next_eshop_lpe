@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import Loading from '@/componentes/comuns/Loading';
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/auth/auth";
 
 const deleteProduto = async (codigo) => {
     'use server';
@@ -21,7 +23,12 @@ const deleteProduto = async (codigo) => {
 export const dynamic = 'force-dynamic';
 
 export default async function Produto() {
+    const session = await getServerSession(authOptions);
 
+    //se não tem sessão válida redireciona para a tela de login
+    if (!session) {
+        redirect("/api/auth/signin");
+    }
     const produtos = await getProdutosDB();
 
     return (
